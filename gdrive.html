@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>SET GDrive APP credentials</title>
+        <style>
+            body {
+                text-align: center;
+                background: #555555;
+                font-weight: 300;
+            }
+            label {
+                margin-right: 10px;
+                color: whitesmoke;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function set() {
+                const id = document.getElementById("id").value;
+                const secret = document.getElementById("secret").value;
+                let settings;
+                if (localStorage.getItem('appSettingss')) {
+                    settings = JSON.parse(localStorage.getItem('appSettings'));
+                } else {
+                    settings = {};
+                }
+                settings.gdriveClientId = id;
+                settings.gdriveClientSecret = secret;
+                settings.dropbox = false;
+                settings.onedrive = false;
+                settings.webdav = false;
+                localStorage.setItem('appSettings', JSON.stringify(settings));
+                window.location.href = ('index.html');
+            }
+        </script>
+        <br><br>
+        <label for="id">Client ID</label><input id="id" size=73 type="text" id="fname" name="fname" style="text-align:center;"><br>
+        <label for="id">Secret Key</label><input id="secret" size=25 type="text" id="fname" name="fname" style="text-align:center;margin:10px;"><br><br><br>
+        <button type="button" onclick="set()" style="margin-bottom:40px;font-size:1.5em;">SET CREDENTIALS</button><br>
+    </body>
+</html>
