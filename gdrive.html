@@ -18,19 +18,14 @@
     <body>
         <script>
             function set() {
-                const id = document.getElementById("id").value;
-                const secret = document.getElementById("secret").value;
                 let settings;
-                if (localStorage.getItem('appSettingss')) {
+                if (localStorage.getItem('appSettings')) {
                     settings = JSON.parse(localStorage.getItem('appSettings'));
                 } else {
                     settings = {};
                 }
-                settings.gdriveClientId = id;
-                settings.gdriveClientSecret = secret;
-                settings.dropbox = false;
-                settings.onedrive = false;
-                settings.webdav = false;
+                settings.gdriveClientId = document.getElementById("id").value;
+                settings.gdriveClientSecret = document.getElementById("secret").value;
                 localStorage.setItem('appSettings', JSON.stringify(settings));
                 window.location.href = ('index.html');
             }
